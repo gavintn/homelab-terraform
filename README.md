@@ -33,5 +33,13 @@ Terraform config that clones a Debian cloud-init template on a Proxmox VE 9.2 ho
 
 | `/sdn/zones/localnetwork` | PVESDNUser | attach NIC to vmbr0 |
 
+## Gotchas
+
+- **host doesn't support requested feature: CPUID...aes**: the x86-64-v2-AES CPU type failed on my host. Use x86-64-v2 or kvm64, on both the template and in main.tf.
+
+- **Hang on apply**: with no guest agent in the template, set agent { enabled = false }.
+
+- .tfstate can contain secrets. It is gitignored; keep it that way.
+
 
 
